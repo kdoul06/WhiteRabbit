@@ -5,6 +5,9 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.ergasia.omada4.myapplicationmap.R;
 import com.ergasia.omada4.myapplicationmap.entities.Poi;
@@ -15,43 +18,63 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private String TAG = "map_activity";
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference myRef = database.getReference("poi");
+
+    private String TAG = "banana maps activity";
 
     private GoogleMap mMap;
 
     SupportMapFragment mapFragment;
+
+    ChildEventListener poiChildEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-         mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        GoogleMap.InfoWindowAdapter myInfoAdapter = new GoogleMap.InfoWindowAdapter() {
+            @Override
+            public View getInfoWindow(Marker marker) {
+                return null;
+            }
 
+            @Override
+            public View getInfoContents(Marker marker) {
+
+                ImageView image = new ImageView(getApplicationContext());
+                image.setImageResource(R.mipmap.playground);
+                return image;
+            }
+        };
+
+        mMap.setInfoWindowAdapter(myInfoAdapter);
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-
                 addPoi(latLng);
             }
         });
@@ -59,47 +82,97 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Log.v(TAG,"ekana klik panw stin pineza " + marker.getTitle());
 
-                viewPoi((Poi)marker.getTag());
+                viewPoi(marker);
+
+                // Return false to indicate that we have not consumed the event and that we wish
+                // for the default behavior to occur (which is for the camera to move such that the
+                // marker is centered and for the marker's info window to open, if it has one).
+
                 return false;
             }
         });
 
 
+        // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(poi[1].location,15));
 
-        Poi[] poi = {   new Poi("1", new LatLng(37.9891977,23.7182692),"1","PAIDIKH"),
-                        new Poi("2", new LatLng(37.9891123,23.7182222),"2","8EATRO")
-                    };
 
-       for (Poi l : poi) {
-
-           mMap.addMarker(new MarkerOptions().position(l.location).title("Pineza " + l.catDescr)).setTag(l);//.title("Marker in Sydney"));
-
-       }
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(poi[1].location,15));
-        
-        
     }
+
 
     private void addPoi(LatLng latLng) {
-        Log.v(TAG,"lat :  "+ latLng.toString());
-
+        Log.v(TAG, "creating new poi at " + latLng);
         Poi poi = new Poi();
-        poi.location=latLng;
+        poi.userId = "ΑΓΝΩΣΤΟΣ";
+        poi.lat = latLng.latitude;
+        poi.lon = latLng.longitude;
         Intent intent = new Intent(this, PoiActivity.class);
         intent.putExtra("poi", poi);
-        intent.putExtra("key", "000000000000");
+        //intent.putExtra("key", "0");
         startActivity(intent);
 
 
     }
 
-    private void viewPoi (Poi poi) {
-
+    private void viewPoi(Marker marker) {
+        Poi poi = (Poi) marker.getTag();
+        String key = marker.getSnippet();
         Intent intent = new Intent(this, PoiActivity.class);
-        intent.putExtra("poi", (Parcelable) poi);
+        intent.putExtra("poi", poi);
+        intent.putExtra("key",key);
         startActivity(intent);
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // εδω ακουω για αλλαγες στα children του poi
+        // το child added σκαει για ΟΟΟΟΛΑ ΤΑ POI οταν ανοιγω την εφαρμογή.
+        poiChildEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String key = dataSnapshot.getKey();
+                Poi poi = dataSnapshot.getValue(Poi.class);
+                Log.v(TAG, "POI ADDED :" + poi.toString());
+                LatLng location = new LatLng(poi.lat,poi.lon);
+                mMap.addMarker(new MarkerOptions().position(location).title(poi.catDescr).snippet(key)).setTag(poi);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                Poi poi = dataSnapshot.getValue(Poi.class);
+
+                Log.v(TAG, "POI CHANGED :" + poi.toString());
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+        myRef.addChildEventListener(poiChildEventListener);
+
+
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        myRef.removeEventListener(poiChildEventListener);
     }
 }
+

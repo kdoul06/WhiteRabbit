@@ -14,7 +14,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -22,18 +21,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
-        android:id="@+id/catTxt" />
-
-    <Button
-        android:text="ΠΡΟΣΘΗΚΗ"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/catTxt"
-        android:layout_toRightOf="@+id/catTxt"
-        android:layout_toEndOf="@+id/catTxt"
-        android:layout_marginTop="28dp"
-        android:id="@+id/button2"
-        android:onClick="onAddBtnClick" />
+        android:id="@+id/catTxt"
+        android:hint="επιλεξτε κατηγορια" />
 
     <TextView
         android:text="ΚΑΤΗΓΟΡΙΑ"
@@ -42,5 +31,18 @@
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/catTxt"
         android:layout_alignStart="@+id/catTxt"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:text="ΠΡΟΣΘΗΚΗ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:onClick="onAddBtnClick"
+        android:layout_alignBaseline="@+id/catTxt"
+        android:layout_alignBottom="@+id/catTxt"
+        android:layout_toRightOf="@+id/catTxt"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
