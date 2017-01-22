@@ -5,10 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.ergasia.omada4.myapplicationmap.service.GeoService;
 import com.ergasia.omada4.myapplicationmap.entities.Poi;
 import com.ergasia.omada4.myapplicationmap.R;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,6 +19,7 @@ public class PoiActivity extends AppCompatActivity {
     private DatabaseReference myRef = database.getReference("poi");
 
     private EditText catTxt;
+    private TextView addressView;
 
     private Poi poi;
 
@@ -25,11 +27,14 @@ public class PoiActivity extends AppCompatActivity {
 
     private String TAG = "banana poi activity";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poi);
         catTxt = (EditText) findViewById(R.id.catTxt);
+        addressView = (TextView) findViewById(R.id.addressView);
         poi = (Poi) getIntent().getSerializableExtra("poi");
         key = getIntent().getStringExtra("key");
 
@@ -42,6 +47,9 @@ public class PoiActivity extends AppCompatActivity {
             catTxt.setText(poi.catDescr);
         }
 
+        String address = GeoService.getAddress(this, poi.lat, poi.lon);
+        Log.v(TAG,"POI Adress is " + address);
+        addressView.setText(address);
     }
 
     public void onAddBtnClick(View view) {
