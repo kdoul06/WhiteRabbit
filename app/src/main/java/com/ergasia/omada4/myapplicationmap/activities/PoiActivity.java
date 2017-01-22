@@ -22,7 +22,7 @@ public class PoiActivity extends AppCompatActivity {
     private DatabaseReference myRef = database.getReference("poi");
 
     private EditText catTxt;
-    private TextView addressView;
+    public TextView addressView;
 
     private Poi poi;
 
