@@ -10,20 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ergasia.omada4.myapplicationmap.activities.PoiActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="25dp"
-        android:id="@+id/catTxt"
-        android:hint="επιλεξτε κατηγορια" />
-
     <TextView
         android:text="ΚΑΤΗΓΟΡΙΑ"
         android:layout_width="wrap_content"
@@ -45,4 +31,17 @@
         android:layout_toRightOf="@+id/catTxt"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:id="@+id/catTxt"
+        android:hint="επιλεξτε κατηγορια"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
