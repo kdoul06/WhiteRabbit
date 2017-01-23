@@ -44,7 +44,7 @@ import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
-    private FirebaseAuth mAuth;
+    private FirebaseAuth mAuth ;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -67,6 +67,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
+
+        Log.v(TAG,mAuth.getCurrentUser().getEmail());
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -188,12 +190,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         poiChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.v(TAG,"previous : " + s);
+//                Log.v(TAG,"previous : " + s);
                 String key = dataSnapshot.getKey();
-                Log.v(TAG,"current  : " + key);
+//                Log.v(TAG,"current  : " + key);
 
                 Poi poi = dataSnapshot.getValue(Poi.class);
-                Log.v(TAG, "POI ADDED :" + poi.toString());
+//                Log.v(TAG, "POI ADDED :" + poi.toString());
                 LatLng location = new LatLng(poi.lat, poi.lon);
 
                 Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.catDescr).snippet(key));
@@ -207,13 +209,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String key = dataSnapshot.getKey();
                 Poi poi = dataSnapshot.getValue(Poi.class);
 
-                Log.v(TAG, "POI CHANGED :" + poi.toString());
+//                Log.v(TAG, "POI CHANGED :" + poi.toString());
 
                 Marker marker = markers.get(key);
                 marker.setTitle(poi.catDescr);
                 marker.setTag(poi);
 
-                Log.v(TAG,((Poi) marker.getTag()).catDescr);
+//                Log.v(TAG,((Poi) marker.getTag()).catDescr);
             }
 
             @Override
@@ -301,6 +303,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+
+    @Override
+    protected void onStop() {
+        //super.onStop();
+        mAuth.signOut();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mAuth.signOut();
+        super.onDestroy();
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_poi"
     android:layout_width="match_parent"
@@ -8,54 +8,53 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ergasia.omada5.WhiteRabbit.activities.PoiActivity">
+    android:orientation="vertical"
+    tools:context="com.ergasia.omada5.WhiteRabbit.activities.PoiActivity"
+    android:weightSum="1">
+
+    <TextView
+        android:text="Διευθυνση"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+
+        android:text="addressView"
+        android:id="@+id/addressView"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
 
     <TextView
         android:text="ΚΑΤΗΓΟΡΙΑ"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/catTxt"
-        android:layout_alignStart="@+id/catTxt"
         android:id="@+id/textView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/categorySpiner"
+        android:layout_weight="0.09" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
 
     <Button
-        android:text="ΠΡΟΣΘΗΚΗ"
-        android:layout_width="wrap_content"
+        android:text="ΑΠΟΘΗΚΕΥΣΗ"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
         android:onClick="onAddBtnClick"
-        android:layout_alignBaseline="@+id/catTxt"
-        android:layout_alignBottom="@+id/catTxt"
-        android:layout_toRightOf="@+id/catTxt"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_weight="0.17" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:id="@+id/catTxt"
-        android:hint="επιλεξτε κατηγορια"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_alignLeft="@+id/catTxt"
-        android:layout_alignStart="@+id/catTxt"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="110dp"
-        android:id="@+id/addressView"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
-</RelativeLayout>
+</LinearLayout>

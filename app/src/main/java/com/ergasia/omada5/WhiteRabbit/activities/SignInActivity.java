@@ -61,7 +61,9 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
         // Check auth on Activity start
         if (mAuth.getCurrentUser() != null) {
+            Log.v(TAG, "banana " + mAuth.getCurrentUser().getEmail());
             onAuthSuccess(mAuth.getCurrentUser());
+
         }
     }
 
@@ -159,7 +161,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
 
     // [START basic_write]
     private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
+        User user = new User(name, email,"happy user");
 
         mDatabase.child("users").child(userId).setValue(user);
     }
