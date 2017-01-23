@@ -41,23 +41,23 @@ public class PoiActivity extends AppCompatActivity {
         poi = (Poi) getIntent().getSerializableExtra("poi");
         key = getIntent().getStringExtra("key");
 
-        Log.v(TAG, "poi received :" + poi.toString());
+       // Log.v(TAG, "poi received :" + poi.toString());
 
         if (key == null) {
             Log.v(TAG, "poi creating new key");
             key = myRef.push().getKey();
         } else {
+            Log.v(TAG, "editing existing poi");
             catTxt.setText(poi.catDescr);
         }
 
         String address = GeoService.getAddress(this, poi.lat, poi.lon);
-        Log.v(TAG,"POI Adress is " + address);
+      //  Log.v(TAG,"POI Adress is " + address);
         addressView.setText(address);
     }
 
     public void onAddBtnClick(View view) {
         // εξακολουθω να θελω να ειναι popup ...
-
         poi.catDescr = catTxt.getText().toString();
         myRef.child(key).setValue(poi);
         finish();

@@ -39,11 +39,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference("poi");
+
+    Map<String , Marker> markers;
 
     private String TAG = "banana maps activity";
 
@@ -58,6 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        markers = new HashMap();
+
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -159,22 +164,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         poiChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.v(TAG,"previous : " + s);
                 String key = dataSnapshot.getKey();
+                Log.v(TAG,"current  : " + key);
+
                 Poi poi = dataSnapshot.getValue(Poi.class);
                 Log.v(TAG, "POI ADDED :" + poi.toString());
                 LatLng location = new LatLng(poi.lat, poi.lon);
-                mMap.addMarker(new MarkerOptions().position(location).title(poi.catDescr).snippet(key)).setTag(poi);
+
+                Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.catDescr).snippet(key));
+                m.setTag(poi);
+                markers.put(key,m);
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            public void onChildChanged(DataSnapshot dataSnapshot, String previousKey) {
+
+                String key = dataSnapshot.getKey();
                 Poi poi = dataSnapshot.getValue(Poi.class);
+
                 Log.v(TAG, "POI CHANGED :" + poi.toString());
+
+                Marker marker = markers.get(key);
+                marker.setTitle(poi.catDescr);
+                marker.setTag(poi);
+
+                Log.v(TAG,((Poi) marker.getTag()).catDescr);
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
+                String key = dataSnapshot.getKey();
+                Poi poi = dataSnapshot.getValue(Poi.class);
+                markers.get(key).remove();
             }
 
             @Override
@@ -190,16 +212,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         myRef.addChildEventListener(poiChildEventListener);
 
-
     }
 
 
-    @Override
-    protected void onStop() {
-        mGoogleApiClient.disconnect();
-        super.onStop();
-        myRef.removeEventListener(poiChildEventListener);
-    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
