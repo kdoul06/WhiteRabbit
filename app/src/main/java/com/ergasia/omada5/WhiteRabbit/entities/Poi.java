@@ -1,9 +1,4 @@
-package com.ergasia.omada4.myapplicationmap.entities;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.google.android.gms.maps.model.LatLng;
+package com.ergasia.omada5.WhiteRabbit.entities;
 
 import java.io.Serializable;
 

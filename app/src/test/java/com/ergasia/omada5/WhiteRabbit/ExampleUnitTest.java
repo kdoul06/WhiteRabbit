@@ -1,4 +1,4 @@
-package com.ergasia.omada4.myapplicationmap;
+package com.ergasia.omada5.WhiteRabbit;
 
 import org.junit.Test;
 

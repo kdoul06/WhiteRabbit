@@ -1,4 +1,4 @@
-package com.ergasia.omada4.myapplicationmap.entities;
+package com.ergasia.omada5.WhiteRabbit.entities;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

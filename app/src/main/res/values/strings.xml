@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">My Application map</string>
+    <string name="app_name">MyWhiteRabbit</string>
     <string name="title_activity_maps">Map</string>
-    <string name="hint_email">βαλτε εμαιλ</string>
-    <string name="hint_password">password</string>
-    <string name="sign_in">εισοδος</string>
-    <string name="sign_up">εγγραφή</string>
+    <string name="hint_email">Your email</string>
+    <string name="hint_password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
 </resources>

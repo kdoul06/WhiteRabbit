@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ergasia.omada4.myapplicationmap">
+    package="com.ergasia.omada5.WhiteRabbit">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -33,9 +33,9 @@
             android:label="@string/title_activity_maps">
 
         </activity>
-        <activity android:name=".activities.PoiActivity"></activity>
+        <activity android:name="com.ergasia.omada5.WhiteRabbit.activities.PoiActivity"></activity>
 
-        <activity android:name=".activities.SignInActivity">
+        <activity android:name="com.ergasia.omada5.WhiteRabbit.activities.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

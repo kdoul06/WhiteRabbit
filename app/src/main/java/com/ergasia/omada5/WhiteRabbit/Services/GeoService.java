@@ -1,4 +1,4 @@
-package com.ergasia.omada4.myapplicationmap.Services;
+package com.ergasia.omada5.WhiteRabbit.Services;
 
 import android.content.Context;
 import android.location.Address;

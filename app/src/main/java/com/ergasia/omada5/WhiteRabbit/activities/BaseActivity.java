@@ -1,4 +1,4 @@
-package com.ergasia.omada4.myapplicationmap.activities;
+package com.ergasia.omada5.WhiteRabbit.activities;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;

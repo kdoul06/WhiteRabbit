@@ -1,4 +1,4 @@
-package com.ergasia.omada4.myapplicationmap.activities;
+package com.ergasia.omada5.WhiteRabbit.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.ergasia.omada4.myapplicationmap.R;
-import com.ergasia.omada4.myapplicationmap.entities.User;
+import com.ergasia.omada5.WhiteRabbit.entities.User;
+import com.ergasia.omada5.WhiteRabbit.R;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
