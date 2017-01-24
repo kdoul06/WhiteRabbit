@@ -8,25 +8,15 @@ import java.io.Serializable;
 
 public class Poi  implements Serializable{
 
-        public String userId;
-
     // 01-20 23:06:16.056 1122-1122/com.ergasia.omada4.myapplicationmap E/UncaughtException:
     // com.google.firebase.database.DatabaseException: Class com.google.android.gms.maps.model.LatLng is missing a constructor with no arguments
     // ετσι ξεφωρτωθηκα την LatLng
         public double lat;
         public double lon;
         public String catId;
-        public String catDescr;
+        public String category;
+        public String uid;
 
 
-    @Override
-    public String toString() {
-        return "Poi{" +
-                "userId='" + userId + '\'' +
-                ", lat=" + lat +
-                ", lon=" + lon +
-                ", catId='" + catId + '\'' +
-                ", catDescr='" + catDescr + '\'' +
-                '}';
-    }
+
 }

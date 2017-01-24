@@ -62,13 +62,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
 
+    private String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
-
-        Log.v(TAG,mAuth.getCurrentUser().getEmail());
+        uid = mAuth.getCurrentUser().getUid();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -154,7 +155,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void addPoi(LatLng latLng) {
         Log.v(TAG, "creating new poi at " + latLng);
         Poi poi = new Poi();
-        poi.userId = "ΑΓΝΩΣΤΟΣ";
+
         poi.lat = latLng.latitude;
         poi.lon = latLng.longitude;
         Intent intent = new Intent(this, PoiActivity.class);
@@ -198,7 +199,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                Log.v(TAG, "POI ADDED :" + poi.toString());
                 LatLng location = new LatLng(poi.lat, poi.lon);
 
-                Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.catDescr).snippet(key));
+                Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.category).snippet(key));
                 m.setTag(poi);
                 markers.put(key,m);
             }
@@ -212,7 +213,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //                Log.v(TAG, "POI CHANGED :" + poi.toString());
 
                 Marker marker = markers.get(key);
-                marker.setTitle(poi.catDescr);
+                marker.setTitle(poi.category);
                 marker.setTag(poi);
 
 //                Log.v(TAG,((Poi) marker.getTag()).catDescr);
@@ -221,7 +222,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 String key = dataSnapshot.getKey();
-                Poi poi = dataSnapshot.getValue(Poi.class);
+              //  Poi poi = dataSnapshot.getValue(Poi.class);
                 markers.get(key).remove();
             }
 
@@ -241,27 +242,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    private void createAccount(String email, String password) {
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                        // If sign in fails, display a message to the user. If sign in succeeds
-                        // the auth state listener will be notified and logic to handle the
-                        // signed in user can be handled in the listener.
-                        if (!task.isSuccessful()) {
-//                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-//                                    Toast.LENGTH_SHORT).show();
-                            Log.v(TAG,"login failed");
-                        }
-
-                        // ...
-                    }
-                });
-    }
 
 
     @Override
@@ -307,15 +287,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     @Override
-    protected void onStop() {
-        //super.onStop();
-        mAuth.signOut();
-    }
-
-    @Override
     protected void onDestroy() {
+        Log.v(TAG,"ON DESTROY sign out");
         mAuth.signOut();
         super.onDestroy();
     }
+
+
 }
 
