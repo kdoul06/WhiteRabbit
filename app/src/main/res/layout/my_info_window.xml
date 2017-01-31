@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="200px"
     android:layout_height="match_parent"
     android:weightSum="1"
     android:id="@+id/my_info">
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/playground"
-        android:id="@+id/imageView2"
-        android:contentDescription="ΠΑΙΔΙΚΗ ΧΑΡΑ" />
+        android:id="@+id/poiCategoryTxt" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_close_light"
+        android:id="@+id/poiImage" />
+
+    <RatingBar
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:id="@+id/poiRating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:numStars="10"
+        android:rating="8"
+        android:stepSize="1"
+        android:isIndicator="false" />
 </LinearLayout>

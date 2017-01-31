@@ -14,6 +14,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.ergasia.omada5.WhiteRabbit.R;
@@ -41,6 +43,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -69,7 +72,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
-        uid = mAuth.getCurrentUser().getUid();
+        if (mAuth != null && mAuth.getCurrentUser() != null) {
+            uid = mAuth.getCurrentUser().getUid();
+        } else {
+            uid="anonymous";
+        }
+
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -120,11 +128,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public View getInfoContents(Marker marker) {
 
-                ImageView image = new ImageView(getApplicationContext());
+//
+
+//      ImageView image = new ImageView(getApplicationContext());
+//                image.setImageResource(R.mipmap.playground);
+//                return image;
+
+                   // return createView(R.layout.my_info_window, getApplicationContext(), 2232);
+
+                View v = getLayoutInflater().inflate(R.layout.my_info_window, null);
+                TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
+                ImageView image  = (ImageView) v.findViewById(R.id.poiImage);
+                RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
+                Poi poi = (Poi) marker.getTag();
+                category.setText(poi.category);
+
                 image.setImageResource(R.mipmap.playground);
-                return image;
+                Random r = new Random();
+                rating.setNumStars(10);
+                rating.setRating(r.nextFloat()*10);
+                rating.setStepSize(1f);
+                return v;
+
+
+
             }
+
+
+
         };
+
+
+
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                viewPoi(marker);
+            }
+        });
 
         mMap.setInfoWindowAdapter(myInfoAdapter);
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
@@ -134,16 +175,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                viewPoi(marker);
-                // Return false to indicate that we have not consumed the event and that we wish
-                // for the default behavior to occur (which is for the camera to move such that the
-                // marker is centered and for the marker's info window to open, if it has one).
-                return false;
-            }
-        });
+        // πιανουμε το click στο info window
+//        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+//            @Override
+//            public boolean onMarkerClick(Marker marker) {
+//              //  viewPoi(marker);
+//                // Return false to indicate that we have not consumed the event and that we wish
+//                // for the default behavior to occur (which is for the camera to move such that the
+//                // marker is centered and for the marker's info window to open, if it has one).
+//                return false;
+//            }
+//        });
 
 
         // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(poi[1].location,15));
