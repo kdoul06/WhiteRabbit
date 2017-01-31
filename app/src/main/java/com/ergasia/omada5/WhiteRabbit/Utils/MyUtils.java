@@ -1,4 +1,4 @@
-package com.ergasia.omada5.WhiteRabbit.utils;
+package com.ergasia.omada5.WhiteRabbit.Utils;
 
 import android.net.NetworkInfo;
 
@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
 
 public class MyUtils {
 
-    public static boolean isConnected (NetworkInfo info) {
+    public static boolean isNetOn(NetworkInfo info) {
 //        ConnectivityManager manager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 //        NetworkInfo info = manager.getActiveNetworkInfo();
         if (info != null && info.isConnected()) {

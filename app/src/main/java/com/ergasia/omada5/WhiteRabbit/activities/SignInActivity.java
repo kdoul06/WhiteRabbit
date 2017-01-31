@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ergasia.omada5.WhiteRabbit.R;
-import com.ergasia.omada5.WhiteRabbit.utils.MyUtils;
+import com.ergasia.omada5.WhiteRabbit.Utils.MyUtils;
 import com.ergasia.omada5.WhiteRabbit.entities.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,11 +23,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
-
 public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
-    private static final String TAG = "SignInActivity";
+    private static final String TAG = "banana - SignInActivity";
     private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 
     private DatabaseReference mDatabase;
@@ -96,7 +94,7 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         NetworkInfo info = manager.getActiveNetworkInfo();
 
 
-        if (MyUtils.isConnected(info)) {
+        if (MyUtils.isNetOn(info)) {
             // Check auth on Activity start
             if (mAuth.getCurrentUser() != null) {
                 Log.v(TAG, "banana " + mAuth.getCurrentUser().getEmail());
@@ -218,10 +216,10 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
-    public void onSkipClick(View view){
-        // Go to MainActivity
-        startActivity(new Intent(SignInActivity.this, MapsActivity.class));
-        finish();
-
-    }
+//    public void onSkipClick(View view){
+//        // Go to MainActivity
+//        startActivity(new Intent(SignInActivity.this, MapsActivity.class));
+//        finish();
+//
+//    }
 }
