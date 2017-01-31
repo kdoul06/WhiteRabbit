@@ -70,7 +70,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:817452836679:android:4921c85de818a373",
         "android_client_info": {
-          "package_name": "com.ergasia.omada4.myapplicationmap"
+          "package_name": "com.ergasia.omada5.WhiteRabbit"
         }
       },
       "oauth_client": [
@@ -78,7 +78,7 @@
           "client_id": "817452836679-8cvnoj7q099889t8k47p914cfpfmg6ds.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.ergasia.omada4.myapplicationmap",
+            "package_name": "com.ergasia.omada5.WhiteRabbit",
             "certificate_hash": "015A2CB66E4A72343C53EA1B97E78F8D273B0F34"
           }
         },
