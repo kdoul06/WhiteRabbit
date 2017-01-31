@@ -71,6 +71,8 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
             key = myRef.push().getKey();
         } else {
             Log.v(TAG, "editing existing poi");
+            int i = categoryList.indexOf(poi.category);
+            categorySpiner.setSelection(i);
         }
 
         String address = GeoService.getAddress(this, poi.lat, poi.lon);
@@ -89,7 +91,10 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
 
 
     private void updateCategories() {
+
         categorySpiner.setAdapter(new ArrayAdapter(this,android.R.layout.simple_list_item_1, categoryList));
+
+
     }
 
     @Override
@@ -104,6 +109,11 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
                 Log.v(TAG,"adding category" + category);
                 categoryList.add(category);
                 updateCategories();
+                if (poi.category.equals(category)) {
+                    Log.v(TAG,"we found it !!!");
+                    categorySpiner.setSelection(categoryList.size());
+                }
+
 
             }
 
@@ -141,14 +151,11 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Log.v(TAG, "eskasa");
         poi.category = (String) parent.getItemAtPosition(position);
-        Log.v(TAG, poi.category);
-
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        poi.category = (String) parent.getSelectedItem();
     }
 }
