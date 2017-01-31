@@ -1,6 +1,8 @@
 package com.ergasia.omada5.WhiteRabbit.activities;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -10,9 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.ergasia.omada5.WhiteRabbit.entities.User;
 import com.ergasia.omada5.WhiteRabbit.R;
-
+import com.ergasia.omada5.WhiteRabbit.Utils.MyUtils;
+import com.ergasia.omada5.WhiteRabbit.entities.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignInActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "SignInActivity";
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -53,19 +56,57 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         // Click listeners
         mSignInButton.setOnClickListener(this);
         mSignUpButton.setOnClickListener(this);
+
+
+//        // Here, thisActivity is the current activity
+//        if (ContextCompat.checkSelfPermission(this,
+//                Manifest.permission.READ_CONTACTS)
+//                != PackageManager.PERMISSION_GRANTED) {
+//
+//            // Should we show an explanation?
+//            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                    Manifest.permission.READ_CONTACTS)) {
+//
+//                // Show an explanation to the user *asynchronously* -- don't block
+//                // this thread waiting for the user's response! After the user
+//                // sees the explanation, try again to request the permission.
+//
+//            } else {
+//
+//                // No explanation needed, we can request the permission.
+//
+//                ActivityCompat.requestPermissions(this,
+//                        new String[]{Manifest.permission.READ_CONTACTS},
+//                        MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+//
+//                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+//                // app-defined int constant. The callback method gets the
+//                // result of the request.
+//            }
+//        }
+
     }
 
-    @Override
+
+       @Override
     public void onStart() {
         super.onStart();
 
-        // Check auth on Activity start
-        if (mAuth.getCurrentUser() != null) {
-            Log.v(TAG, "banana " + mAuth.getCurrentUser().getEmail());
-            onAuthSuccess(mAuth.getCurrentUser());
+        ConnectivityManager manager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo info = manager.getActiveNetworkInfo();
 
+
+        if (MyUtils.isConnected(info)) {
+            // Check auth on Activity start
+            if (mAuth.getCurrentUser() != null) {
+                Log.v(TAG, "banana " + mAuth.getCurrentUser().getEmail());
+                onAuthSuccess(mAuth.getCurrentUser());
+            }
+        } else {
+                Toast.makeText(this, "ΔΕΝ ΥΠΑΡΧΕΙ ΣΥΝΔΕΣΗ ΣΤΟ INTERNET", Toast.LENGTH_LONG).show();
+                Log.v(TAG, "banana -- no internet connection!!!!!" );
+            }
         }
-    }
 
     private void signIn() {
         Log.d(TAG, "signIn");
@@ -175,5 +216,12 @@ public class SignInActivity extends BaseActivity implements View.OnClickListener
         } else if (i == R.id.button_sign_up) {
             signUp();
         }
+    }
+
+    public void onSkipClick(View view){
+        // Go to MainActivity
+        startActivity(new Intent(SignInActivity.this, MapsActivity.class));
+        finish();
+
     }
 }
