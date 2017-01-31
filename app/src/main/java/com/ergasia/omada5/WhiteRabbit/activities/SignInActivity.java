@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.ergasia.omada5.WhiteRabbit.R;
-import com.ergasia.omada5.WhiteRabbit.Utils.MyUtils;
+import com.ergasia.omada5.WhiteRabbit.utils.MyUtils;
 import com.ergasia.omada5.WhiteRabbit.entities.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

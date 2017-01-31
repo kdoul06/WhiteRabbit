@@ -1,4 +1,4 @@
-package com.ergasia.omada5.WhiteRabbit.Utils;
+package com.ergasia.omada5.WhiteRabbit.utils;
 
 import android.net.NetworkInfo;
 
