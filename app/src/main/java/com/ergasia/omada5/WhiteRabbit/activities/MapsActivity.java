@@ -6,19 +6,19 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.ergasia.omada5.WhiteRabbit.R;
+import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -29,9 +29,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -128,46 +125,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public View getInfoContents(Marker marker) {
 
-//
-
-//      ImageView image = new ImageView(getApplicationContext());
+//                ImageView image = new ImageView(getApplicationContext());
 //                image.setImageResource(R.mipmap.playground);
 //                return image;
 
-                   // return createView(R.layout.my_info_window, getApplicationContext(), 2232);
+                   // return createView(R.layout.poi_0_info_short, getApplicationContext(), 2232);
+                View v = getLayoutInflater().inflate(R.layout.poi_0_info_short, null);
 
-                View v = getLayoutInflater().inflate(R.layout.my_info_details_window, null);
                 TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
-//                ImageView image1  = (ImageView) v.findViewById(R.id.poiImage1);
-//                ImageView image2  = (ImageView) v.findViewById(R.id.poiImage2);
-//                ImageView image3  = (ImageView) v.findViewById(R.id.poiImage3);
-                RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
+                ImageView image  = (ImageView) v.findViewById(R.id.poiImage);
+
+//                RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
                 Poi poi = (Poi) marker.getTag();
                 category.setText(poi.category);
 
-//                image1.setImageResource(R.mipmap.playground);
-//                image2.setImageResource(R.mipmap.playground);
-//                image3.setImageResource(R.mipmap.playground);
+                image.setImageResource(R.mipmap.playground);
+
                 Random r = new Random();
-                rating.setNumStars(10);
-                rating.setRating(r.nextFloat()*10);
-                rating.setStepSize(1f);
+//                rating.setNumStars(10);
+//                rating.setRating(r.nextFloat()*10);
+//                rating.setStepSize(1f);
                 return v;
-
-
-
             }
-
-
-
         };
-
-
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                viewPoi(marker);
+
+                dtlPoi(marker);
             }
         });
 
@@ -221,6 +207,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
+
+    private View dtlPoi(Marker marker) {
+//        Poi poi = (Poi) marker.getTag();
+//        String key = marker.getSnippet();
+//        Intent intent = new Intent(this, PoiActivity.class);
+//        intent.putExtra("poi", poi);
+//        intent.putExtra("key", key);
+//        startActivity(intent);
+
+
+        Log.v(TAG,"poi details");
+
+        View v = getLayoutInflater().inflate(R.layout.poi_dtl_0_master, null);
+        TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
+        ImageView image1  = (ImageView) v.findViewById(R.id.poiImage1);
+        ImageView image2  = (ImageView) v.findViewById(R.id.poiImage2);
+        ImageView image3  = (ImageView) v.findViewById(R.id.poiImage3);
+
+        RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
+        Poi poi = (Poi) marker.getTag();
+        category.setText(poi.category);
+
+        image1.setImageResource(R.mipmap.playground);
+        image2.setImageResource(R.mipmap.playground);
+        image3.setImageResource(R.mipmap.playground);
+
+        Random r = new Random();
+//                rating.setNumStars(10);
+//                rating.setRating(r.nextFloat()*10);
+//                rating.setStepSize(1f);
+        return v;
+
+    }
 
     @Override
     protected void onStart() {

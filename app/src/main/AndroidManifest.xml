@@ -34,16 +34,11 @@
             android:label="@string/title_activity_maps"></activity>
         <activity android:name=".activities.PoiActivity" />
         <activity android:name=".activities.SignInActivity">
-
-        </activity>
-        <activity android:name=".activities.PoiInfoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
     </application>
 

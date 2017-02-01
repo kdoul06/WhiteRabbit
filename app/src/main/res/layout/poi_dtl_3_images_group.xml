@@ -6,14 +6,8 @@
     android:id="@+id/images_group">
 
     <ImageView
-            android:layout_width="100px"
-            android:layout_height="100px"
-            app:srcCompat="@drawable/ic_close_light"
-            android:id="@+id/poiImage1" />
-
-    <ImageView
-        android:layout_width="100px"
-        android:layout_height="100px"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/ic_close_light"
         android:id="@+id/poiImage2"
         android:layout_alignParentTop="true"
@@ -23,8 +17,8 @@
         android:layout_marginStart="18dp" />
 
     <ImageView
-        android:layout_width="100px"
-        android:layout_height="100px"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/ic_close_light"
         android:id="@+id/poiImage3"
         android:layout_alignParentTop="true"
@@ -32,6 +26,15 @@
         android:layout_toEndOf="@+id/poiImage2"
         android:layout_marginLeft="21dp"
         android:layout_marginStart="21dp" />
+
+    <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/ic_close_light"
+            android:id="@+id/poiImage1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
