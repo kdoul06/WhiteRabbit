@@ -136,14 +136,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                    // return createView(R.layout.my_info_window, getApplicationContext(), 2232);
 
-                View v = getLayoutInflater().inflate(R.layout.my_info_window, null);
+                View v = getLayoutInflater().inflate(R.layout.my_info_details_window, null);
                 TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
-                ImageView image  = (ImageView) v.findViewById(R.id.poiImage);
+//                ImageView image1  = (ImageView) v.findViewById(R.id.poiImage1);
+//                ImageView image2  = (ImageView) v.findViewById(R.id.poiImage2);
+//                ImageView image3  = (ImageView) v.findViewById(R.id.poiImage3);
                 RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
                 Poi poi = (Poi) marker.getTag();
                 category.setText(poi.category);
 
-                image.setImageResource(R.mipmap.playground);
+//                image1.setImageResource(R.mipmap.playground);
+//                image2.setImageResource(R.mipmap.playground);
+//                image3.setImageResource(R.mipmap.playground);
                 Random r = new Random();
                 rating.setNumStars(10);
                 rating.setRating(r.nextFloat()*10);

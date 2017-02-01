@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="400px"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:id="@+id/my_info_details">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/poiCategoryTxt" />
+
+    <include layout="@layout/images_group"/>
+
+    <RatingBar
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:id="@+id/poiRating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:numStars="10"
+        android:rating="8"
+        android:stepSize="1"
+        android:isIndicator="false" />
+
+
+</LinearLayout>
