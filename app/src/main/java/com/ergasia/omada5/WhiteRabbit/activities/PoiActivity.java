@@ -109,12 +109,15 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
                 Log.v(TAG,"adding category" + category);
                 categoryList.add(category);
                 updateCategories();
-                if (poi.category.equals(category)) {
-                    Log.v(TAG,"we found it !!!");
-                    categorySpiner.setSelection(categoryList.size());
+
+                if (poi.category != null) {
+                    if (poi.category.equals(category) ) {
+                        Log.v(TAG,"category was found !!!");
+                        categorySpiner.setSelection(categoryList.size());
+                    }
+                } else {
+                    Log.v(TAG,"category is NULL !!!");
                 }
-
-
             }
 
             @Override
