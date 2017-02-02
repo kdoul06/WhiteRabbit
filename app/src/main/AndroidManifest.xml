@@ -31,7 +31,7 @@
 
         <activity
             android:name=".activities.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".activities.PoiActivity" />
         <activity android:name=".activities.SignInActivity">
             <intent-filter>

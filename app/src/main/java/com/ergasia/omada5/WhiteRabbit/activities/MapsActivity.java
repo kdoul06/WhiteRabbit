@@ -208,36 +208,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    private View dtlPoi(Marker marker) {
-//        Poi poi = (Poi) marker.getTag();
-//        String key = marker.getSnippet();
-//        Intent intent = new Intent(this, PoiActivity.class);
-//        intent.putExtra("poi", poi);
-//        intent.putExtra("key", key);
-//        startActivity(intent);
+    private void dtlPoi(Marker marker) {
+        Poi poi = (Poi) marker.getTag();
+        String key = marker.getSnippet();
+        Intent intent = new Intent(this, PoiActivity.class);
+        intent.putExtra("poi", poi);
+        intent.putExtra("key", key);
+        startActivity(intent);
 
 
         Log.v(TAG,"poi details");
 
-        View v = getLayoutInflater().inflate(R.layout.poi_dtl_0_master, null);
-        TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
-        ImageView image1  = (ImageView) v.findViewById(R.id.poiImage1);
-        ImageView image2  = (ImageView) v.findViewById(R.id.poiImage2);
-        ImageView image3  = (ImageView) v.findViewById(R.id.poiImage3);
-
-        RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
-        Poi poi = (Poi) marker.getTag();
-        category.setText(poi.category);
-
-        image1.setImageResource(R.mipmap.playground);
-        image2.setImageResource(R.mipmap.playground);
-        image3.setImageResource(R.mipmap.playground);
-
-        Random r = new Random();
-//                rating.setNumStars(10);
-//                rating.setRating(r.nextFloat()*10);
-//                rating.setStepSize(1f);
-        return v;
+//        View v = getLayoutInflater().inflate(R.layout.poi_dtl_0_master, null);
+//        TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
+//        ImageView image1  = (ImageView) v.findViewById(R.id.poiImage1);
+//        ImageView image2  = (ImageView) v.findViewById(R.id.poiImage2);
+//        ImageView image3  = (ImageView) v.findViewById(R.id.poiImage3);
+//
+//        RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
+//        Poi poi = (Poi) marker.getTag();
+//        category.setText(poi.category);
+//
+//        image1.setImageResource(R.mipmap.playground);
+//        image2.setImageResource(R.mipmap.playground);
+//        image3.setImageResource(R.mipmap.playground);
+//
+//        Random r = new Random();
+////                rating.setNumStars(10);
+////                rating.setRating(r.nextFloat()*10);
+////                rating.setStepSize(1f);
+//        return v;
 
     }
 

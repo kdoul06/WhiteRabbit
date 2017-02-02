@@ -52,14 +52,14 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_poi);
+        setContentView(R.layout.poi_dtl_0_master);
 
         mAuth = FirebaseAuth.getInstance();
 
         addressView = (TextView) findViewById(R.id.addressView);
-        categorySpiner = (Spinner) findViewById(R.id.categorySpiner);
+//        categorySpiner = (Spinner) findViewById(R.id.categorySpiner);
 
-        categorySpiner.setOnItemSelectedListener(this);
+//        categorySpiner.setOnItemSelectedListener(this);
 
         poi = (Poi) getIntent().getSerializableExtra("poi");
         key = getIntent().getStringExtra("key");
@@ -72,7 +72,7 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
         } else {
             Log.v(TAG, "editing existing poi");
             int i = categoryList.indexOf(poi.category);
-            categorySpiner.setSelection(i);
+//            categorySpiner.setSelection(i);
         }
 
         String address = GeoService.getAddress(this, poi.lat, poi.lon);
@@ -92,7 +92,7 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
 
     private void updateCategories() {
 
-        categorySpiner.setAdapter(new ArrayAdapter(this,android.R.layout.simple_list_item_1, categoryList));
+//        categorySpiner.setAdapter(new ArrayAdapter(this,android.R.layout.simple_list_item_1, categoryList));
 
 
     }
