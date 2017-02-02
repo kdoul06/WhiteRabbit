@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,22 +10,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ergasia.omada5.WhiteRabbit.activities.SignInActivity">
 
+    <!-- Top bar -->
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:src="@drawable/firebase_lockup_400" />
+
+    <LinearLayout
+        android:id="@+id/layout_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:enabled="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_close_light"
+            android:id="@+id/imageView"
+            android:layout_gravity="right" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_email_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/icon"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/layout_top_bar"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/field_email"
@@ -34,7 +47,9 @@
             android:gravity="center_horizontal"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:layout_gravity="center" />
 
         <EditText
             android:id="@+id/field_password"
@@ -44,44 +59,81 @@
             android:gravity="center_horizontal"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            tools:text="@string/forgot_password"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:gravity="bottom|right"
+            android:layout_gravity="right" />
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_buttons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="150dp"
         android:layout_below="@+id/layout_email_password"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/button_sign_in"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:text="@string/sign_in" />
-
 
         <Button
             android:id="@+id/button_sign_up"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_up" />
+            android:layout_height="50dp"
+            android:text="@string/sign_up"
+            android:layout_below="@+id/layout_buttons" />
+            <!--android:layout_weight="1" -->
 
     </LinearLayout>
 
-    <!--<TextView-->
-        <!--android:text="Skip"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:id="@+id/textView3"-->
-        <!--android:clickable="true"-->
-        <!--android:onClick="onSkipClick"-->
-        <!--android:enabled="false" />-->
+
+    <LinearLayout
+        android:id="@+id/layout_bottom_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        android:enabled="false" />
+
+        <TextView
+            android:text="powered by "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView3"
+            android:clickable="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textAllCaps="false"
+            android:textSize="10sp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/firebase_lockup_400"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 
 </RelativeLayout>
