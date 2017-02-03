@@ -113,7 +113,7 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
                 if (poi.category != null) {
                     if (poi.category.equals(category) ) {
                         Log.v(TAG,"category was found !!!");
-                        categorySpiner.setSelection(categoryList.size());
+//                        categorySpiner.setSelection(categoryList.size());
                     }
                 } else {
                     Log.v(TAG,"category is NULL !!!");

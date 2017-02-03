@@ -7,4 +7,7 @@
     <string name="sign_up">Join now</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="powerdBy">powerdBy</string>
+    <string name="poiQuality">Ποιότητα χώρου</string>
+    <string name="poiDistance">Απόσταση</string>
+    <string name="poiFacilities">Παροχές/Υποδομές</string>
 </resources>
