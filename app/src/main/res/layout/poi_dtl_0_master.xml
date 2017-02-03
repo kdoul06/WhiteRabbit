@@ -21,15 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <RatingBar
+    <include layout="@layout/poi_dtl_4_ratings"
         android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:id="@+id/poiRating"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:numStars="10"
-        android:rating="8"
-        android:stepSize="1"
-        android:isIndicator="false" />
+        android:layout_height="wrap_content" />
 
-
+    <include layout="@layout/poi_dtl_5_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
