@@ -136,9 +136,9 @@
             android:layout_alignParentEnd="false"
             android:textAllCaps="false"
             android:textSize="10sp"
-            android:gravity="center_vertical"
             android:textAlignment="textEnd"
-            android:layout_gravity="right|center_vertical" />
+            android:layout_gravity="right|center_vertical"
+            android:gravity="end" />
 
         <ImageView
             android:id="@+id/icon"

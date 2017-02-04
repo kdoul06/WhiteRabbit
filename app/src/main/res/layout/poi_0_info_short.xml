@@ -24,7 +24,7 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:srcCompat="@drawable/ic_close_light"
+        app:srcCompat="@drawable/IMAGE_01"
         android:id="@+id/poiImage" />
 
     <TextView
