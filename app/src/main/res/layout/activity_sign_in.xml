@@ -73,7 +73,7 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:layout_gravity="center"
-            android:text="123456" />
+            android:text="1234567" />
 
         <TextView
             android:text="@string/forgot_password"
