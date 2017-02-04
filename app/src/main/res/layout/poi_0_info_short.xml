@@ -24,7 +24,8 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/poiImage" />
+        android:id="@+id/poiImage"
+        android:src="@mipmap/poi_image_01" />
 
     <TextView
         android:text="poiCategory"
