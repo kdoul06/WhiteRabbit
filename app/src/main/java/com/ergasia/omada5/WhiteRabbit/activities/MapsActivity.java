@@ -314,9 +314,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                Log.v(TAG, "POI ADDED :" + poi.toString());
                 LatLng location = new LatLng(poi.lat, poi.lon);
 
-                Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.category).snippet(key));
+                Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.category).snippet(key).);
                 m.setTag(poi);
                 markers.put(key,m);
+
             }
 
             @Override

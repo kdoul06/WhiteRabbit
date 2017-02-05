@@ -40,37 +40,36 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/layout_email_password"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_below="@+id/layout_top_bar"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp">
 
         <EditText
             android:id="@+id/field_email"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:gravity="center_horizontal"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:textAlignment="center"
             android:layout_gravity="center"
-            android:text="kd@gmail.com" />
+            android:text="kd@gmail.com"
+            android:cursorVisible="true" />
 
         <EditText
             android:id="@+id/field_password"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:gravity="center_horizontal"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:maxLines="1"
-            android:layout_gravity="center"
             android:text="1234567" />
 
         <TextView
@@ -81,10 +80,24 @@
             android:textSize="10sp"
             android:textAlignment="center"
             android:gravity="bottom|right"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:clickable="true" />
+
+        <CheckBox
+            android:text="Keep me signed in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox"
+            android:gravity="center"
+            android:layout_gravity="center_vertical|center" />
+
+        <TextView
+            android:text="By clicking SIGN IN you aggre to WhiteRabbit Privacy Policy and Term of Use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/layout_buttons"
@@ -92,7 +105,8 @@
         android:layout_height="250dp"
         android:orientation="vertical"
         android:layout_below="@+id/layout_email_password"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp">
 
         <Button
             android:id="@+id/button_sign_in"
@@ -120,7 +134,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
 
         <Button
             android:id="@+id/fb_login"
