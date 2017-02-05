@@ -46,7 +46,7 @@
             android:textColor="@color/cast_expanded_controller_text_color" />
 
         <TextView
-            android:text="TextView"
+            android:text="categoryTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/categoryTxt"

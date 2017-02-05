@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.ergasia.omada5.WhiteRabbit.R;
 import com.ergasia.omada5.WhiteRabbit.entities.Poi;
-import com.ergasia.omada5.WhiteRabbit.services.GeoService;
+import com.ergasia.omada5.WhiteRabbit.Services.GeoService;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;

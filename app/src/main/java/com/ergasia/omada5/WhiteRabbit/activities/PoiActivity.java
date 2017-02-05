@@ -6,23 +6,20 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TabHost;
 import android.widget.TextView;
 
-import com.ergasia.omada5.WhiteRabbit.services.GeoService;
-import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.ergasia.omada5.WhiteRabbit.R;
+import com.ergasia.omada5.WhiteRabbit.entities.Poi;
+import com.ergasia.omada5.WhiteRabbit.Services.GeoService;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,12 +32,10 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
 
     FirebaseAuth mAuth;
 
-    private TextView addressView;
-
+    private TextView addressView, catTxt;
     private Spinner categorySpiner;
 
     private Poi poi;
-
     private String key;
 
     private String TAG = "banana poi activity";
@@ -48,18 +43,42 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
     private ChildEventListener categoryListener;
 
     private List<String> categoryList = new ArrayList();
+    TabHost tabHost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.poi_dtl_0_master);
 
+//        TabHost host = (TabHost)findViewById(R.id.tab_host);
+//        host.setup();
+//
+//        //Tab 1
+//        TabHost.TabSpec spec = host.newTabSpec("Tab One");
+//        spec.setContent(R.id.tab1);
+//        spec.setIndicator("Tab One");
+//        host.addTab(spec);
+//
+//        //Tab 2
+//        spec = host.newTabSpec("Tab Two");
+//        spec.setContent(R.id.tab2);
+//        spec.setIndicator("Tab Two");
+//        host.addTab(spec);
+//
+//        //Tab 3
+//        spec = host.newTabSpec("Tab Three");
+//        spec.setContent(R.id.tab3);
+//        spec.setIndicator("Tab Three");
+//        host.addTab(spec);
+
+
+
         mAuth = FirebaseAuth.getInstance();
 
         addressView = (TextView) findViewById(R.id.addressView);
-//        categorySpiner = (Spinner) findViewById(R.id.categorySpiner);
-
-//        categorySpiner.setOnItemSelectedListener(this);
+        categorySpiner = (Spinner) findViewById(R.id.categorySpiner);
+        catTxt = (TextView) findViewById(R.id.categoryTxt);
+        categorySpiner.setOnItemSelectedListener(this);
 
         poi = (Poi) getIntent().getSerializableExtra("poi");
         key = getIntent().getStringExtra("key");
@@ -72,13 +91,38 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
         } else {
             Log.v(TAG, "editing existing poi");
             int i = categoryList.indexOf(poi.category);
-//            categorySpiner.setSelection(i);
+            categorySpiner.setSelection(i);
         }
 
         String address = GeoService.getAddress(this, poi.lat, poi.lon);
         //  Log.v(TAG,"POI Adress is " + address);
         addressView.setText(address);
+        catTxt.setText(poi.category);
     }
+
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+
 
     public void onAddBtnClick(View view) {
         // εξακολουθω να θελω να ειναι popup ...
@@ -92,7 +136,7 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
 
     private void updateCategories() {
 
-//        categorySpiner.setAdapter(new ArrayAdapter(this,android.R.layout.simple_list_item_1, categoryList));
+        categorySpiner.setAdapter(new ArrayAdapter(this,android.R.layout.simple_list_item_1, categoryList));
 
 
     }
@@ -113,7 +157,7 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
                 if (poi.category != null) {
                     if (poi.category.equals(category) ) {
                         Log.v(TAG,"category was found !!!");
-//                        categorySpiner.setSelection(categoryList.size());
+                        categorySpiner.setSelection(categoryList.size());
                     }
                 } else {
                     Log.v(TAG,"category is NULL !!!");

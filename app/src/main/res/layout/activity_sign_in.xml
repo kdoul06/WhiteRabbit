@@ -7,13 +7,13 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ergasia.omada5.WhiteRabbit.activities.SignInActivity">
+    tools:context="com.ergasia.omada5.WhiteRabbit.activities.SignInActivity"
+    android:background="@color/wr_background_color">
 
     <LinearLayout
         android:id="@+id/layout_top_bar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:enabled="true"
         android:layout_alignParentTop="true"
@@ -23,23 +23,21 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_close_light"
+            app:srcCompat="@mipmap/wr_logo_no_white"
             android:id="@+id/imageView3"
-            android:layout_weight="1" />
+            android:background="@color/wr_background_color"
+            android:cropToPadding="false"
+            android:layout_gravity="left|center_vertical" />
 
-        <ImageView
-            android:layout_width="50dp"
+        <TextView
+            android:text="@string/sign_in"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_close_light"
-            android:id="@+id/imageView2"
-            android:layout_weight="1" />
+            android:id="@+id/textView5"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_vertical" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_close_light"
-            android:id="@+id/imageView"
-            android:layout_gravity="right" />
     </LinearLayout>
 
     <LinearLayout
@@ -87,13 +85,14 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/layout_buttons"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="250dp"
+        android:orientation="vertical"
         android:layout_below="@+id/layout_email_password"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical">
+        android:layout_alignParentStart="true">
 
         <Button
             android:id="@+id/button_sign_in"
@@ -101,7 +100,13 @@
             android:layout_height="50dp"
             android:text="@string/sign_in"
             android:background="@color/cast_expanded_controller_background_color"
-            android:textColor="@color/cast_expanded_controller_text_color" />
+            android:textColor="@color/cast_expanded_controller_text_color"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
             android:id="@+id/button_sign_up"
@@ -109,9 +114,25 @@
             android:layout_height="50dp"
             android:text="@string/sign_up"
             android:layout_below="@+id/layout_buttons"
-            android:background="@color/cast_expanded_controller_text_color" />
-    </LinearLayout>
+            android:background="@color/cast_expanded_controller_text_color"
+            android:layout_weight="1" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4" />
+
+        <Button
+            android:id="@+id/fb_login"
+            android:textColor="@color/cast_expanded_controller_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Log in with Facebook"
+            android:textAllCaps="false" />
+</LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_bottom_info"
@@ -142,8 +163,8 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:src="@drawable/firebase_lockup_400"
             android:layout_alignParentTop="false"
             android:layout_centerHorizontal="false"
