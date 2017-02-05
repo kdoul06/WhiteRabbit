@@ -7,12 +7,14 @@
     android:id="@+id/my_info">
 
     <TextView
-        android:text="7.2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/poiAvgScore"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        android:textAlignment="center" />
+        android:ems="10"
+        android:id="@+id/poiAvgScoreShort"
+        android:text="8.2"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:text="poi Address"

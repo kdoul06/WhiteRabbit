@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.ergasia.omada5.WhiteRabbit.R;
 import com.ergasia.omada5.WhiteRabbit.entities.Poi;
+import com.ergasia.omada5.WhiteRabbit.services.GeoService;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -44,7 +45,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 //public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -172,16 +172,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                    // return createView(R.layout.poi_0_info_short, getApplicationContext(), 2232);
                 View v = getLayoutInflater().inflate(R.layout.poi_0_info_short, null);
 
+                TextView address = (TextView) v.findViewById(R.id.poiAddr);
                 TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
                 ImageView image  = (ImageView) v.findViewById(R.id.poiImage);
+                //TextView score = (TextView) v.findViewById(R.id.poiAvgScoreShort);
 
-//                RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
+
+//               RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
                 Poi poi = (Poi) marker.getTag();
+                address.setText(GeoService.getAddress(getApplicationContext(), poi.lat, poi.lon)) ;
                 category.setText(poi.category);
+                //Random rScore = new Random();
+                //DecimalFormat df = new DecimalFormat("#.#");
+                //Log.v(TAG,"Average Score :" + String.format("%.1g%n", df.format(rScore.nextDouble()*10)).toString());
+                //score.setText(String.format("%.1g%n", df.format(rScore.nextDouble()*10)).toString());
+                //                score.setText( v1.toString());
 
-                image.setImageResource(R.mipmap.playground);
+//                image.setImageResource(R.mipmap.playground);  -- ebala sto layout thn eikona
 
-                Random r = new Random();
+
+//                Random r = new Random();
 //                rating.setNumStars(10);
 //                rating.setRating(r.nextFloat()*10);
 //                rating.setStepSize(1f);
