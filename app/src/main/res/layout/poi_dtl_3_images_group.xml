@@ -7,12 +7,18 @@
 
     <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:elevation="0dp"
+        android:background="?attr/colorAccent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal"
+            android:background="@color/wr_background_color"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
             <ImageView
                     android:layout_width="130dp"
@@ -26,7 +32,8 @@
                 android:focusable="true"
                 android:adjustViewBounds="true"
                 android:clickable="true"
-                android:contextClickable="false" />
+                android:contextClickable="false"
+                android:backgroundTintMode="multiply" />
 
             <ImageView
                 android:layout_width="130dp"

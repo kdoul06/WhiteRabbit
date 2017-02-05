@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/poi_center_bar"
-    android:orientation="vertical"
-    android:background="@color/cast_libraries_material_featurehighlight_text_header_color">
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -16,7 +15,9 @@
         android:id="@+id/linear_4"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
 
         <LinearLayout
             android:orientation="horizontal"

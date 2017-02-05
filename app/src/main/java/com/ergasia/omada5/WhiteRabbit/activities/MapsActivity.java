@@ -22,8 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ergasia.omada5.WhiteRabbit.R;
-import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.ergasia.omada5.WhiteRabbit.Services.GeoService;
+import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -314,9 +314,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                Log.v(TAG, "POI ADDED :" + poi.toString());
                 LatLng location = new LatLng(poi.lat, poi.lon);
 
-                Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.category).snippet(key).);
+                Marker m = mMap.addMarker(new MarkerOptions().position(location).title(poi.category).snippet(key));
                 m.setTag(poi);
+                //BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.defaultMarker(R.color.wr_background_color);
+                //m.setIcon(bitmapDescriptor);
                 markers.put(key,m);
+
 
             }
 
