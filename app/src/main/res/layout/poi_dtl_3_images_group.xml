@@ -5,36 +5,59 @@
     android:layout_height="wrap_content"
     android:id="@+id/images_group">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:srcCompat="@drawable/ic_close_light"
-        android:id="@+id/poiImage2"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/poiImage1"
-        android:layout_toEndOf="@+id/poiImage1"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp" />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:srcCompat="@drawable/ic_close_light"
-            android:id="@+id/poiImage1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        app:srcCompat="@drawable/ic_close_light"
-        android:id="@+id/poiImage3"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/poiImage2"
-        android:layout_toEndOf="@+id/poiImage2" />
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:srcCompat="@drawable/ic_close_light"
+                android:id="@+id/poiImage2"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/poiImage1"
+                android:layout_toEndOf="@+id/poiImage1"
+                android:layout_marginLeft="18dp"
+                android:layout_marginStart="18dp"
+                android:src="@mipmap/poi_image_02"
+                android:layout_weight="1" />
+
+            <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    app:srcCompat="@drawable/ic_close_light"
+                    android:id="@+id/poiImage1"
+                android:src="@mipmap/poi_image_01"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:srcCompat="@drawable/ic_close_light"
+                android:id="@+id/poiImage3"
+                android:layout_marginLeft="17dp"
+                android:layout_marginStart="17dp"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/poiImage2"
+                android:layout_toEndOf="@+id/poiImage2"
+                android:src="@mipmap/poi_image_03"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                app:srcCompat="@mipmap/poi_image_03"
+                android:id="@+id/poiImage4"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
 </RelativeLayout>
