@@ -32,11 +32,15 @@
                 android:layout_width="130dp" />
 
             <RatingBar
+                android:theme="@style/RatingBar"
+                android:minHeight="16dip"
+                android:maxHeight="16dip"
+                android:progressDrawable="@color/colorAccent"
+                android:indeterminateDrawable="@color/cast_expanded_controller_background_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ratingBar3"
                 android:isIndicator="false"
-                style="@android:style/Widget.Holo.RatingBar.Small"
                 android:layout_weight="1" />
 
             <TextView

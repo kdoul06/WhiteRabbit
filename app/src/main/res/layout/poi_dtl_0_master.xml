@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     android:id="@+id/my_info_details"
-    android:background="@color/wr_background_color">
+    android:background="@color/wr_background_color"
+    tools:context="com.ergasia.omada5.WhiteRabbit.activities.PoiActivity">
 
     <include layout="@layout/poi_dtl_1_top_bar"
         android:layout_width="match_parent"

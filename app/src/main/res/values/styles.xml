@@ -1,13 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/wr_background_color</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/cast_intro_overlay_button_background_color</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
     </style>
 
+    <style name="RatingBar">
+        <item name="colorControlNormal">@color/cast_intro_overlay_button_background_color</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <!--<item name="progressDrawable">@drawable/ratingbar_small_holo_dark</item>-->
+        <!--<item name="indeterminateDrawable">@drawable/ratingbar_small_holo_dark</item>-->
+        <!--<item name="minHeight">16dip</item>-->
+        <!--<item name="maxHeight">16dip</item>-->
+    </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

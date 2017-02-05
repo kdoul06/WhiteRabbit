@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ergasia.omada5.WhiteRabbit.R;
 import com.ergasia.omada5.WhiteRabbit.Services.GeoService;
@@ -142,9 +143,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΡΥΘΜΙΣΕΙΣ .... ", Toast.LENGTH_SHORT).show();
             return true;
         }
 
+        if (id == R.id.action_profile) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΠΡΟΦΙΛ ΧΡΗΣΤΗ .... ", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        if (id==R.id.action_exit) {
+            finish();
+         }
         return super.onOptionsItemSelected(item);
     }
 

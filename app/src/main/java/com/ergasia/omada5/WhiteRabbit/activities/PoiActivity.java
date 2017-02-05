@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ergasia.omada5.WhiteRabbit.R;
 import com.ergasia.omada5.WhiteRabbit.entities.Poi;
@@ -126,9 +127,12 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
 
     public void onAddBtnClick(View view) {
         // εξακολουθω να θελω να ειναι popup ...
+        Toast.makeText(this, "ΕΙΣΑΙ ΕΔΩ ΓΙΑ ΛΙΓΟ ....", Toast.LENGTH_LONG).show();
         poi.uid = mAuth.getCurrentUser().getUid();
-
+//
         Log.v(TAG, poi.category);
+
+        //Toast.makeText(this, "ΠΑΤΗΣΑΤΕ ΤΟ ΚΟΥΜΠΙ ΑΛΛΑ Η ΚΑΤΑΧΩΡΗΣΗ ΔΕΝ ΕΓΙΝΕ", Toast.LENGTH_LONG).show();
         myRef.child(key).setValue(poi);
         finish();
     }
