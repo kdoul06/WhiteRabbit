@@ -14,26 +14,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/linear_2">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_close_light"
-            android:id="@+id/poiImage2"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_close_light"
-            android:id="@+id/poiImage1"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@drawable/ic_share_variant_white_24dp"
-            android:id="@+id/poiImage3"
-            android:layout_weight="1" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,7 +33,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display2"
             android:textAlignment="center"
             android:textColor="@color/cast_expanded_controller_text_color"
-            android:textSize="80dp"
+            android:textSize="70dp"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -63,6 +43,14 @@
             android:id="@+id/addressView"
             android:textAlignment="center"
             android:layout_weight="1"
+            android:textColor="@color/cast_expanded_controller_text_color" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryTxt"
+            android:gravity="center_horizontal"
             android:textColor="@color/cast_expanded_controller_text_color" />
 
         <Spinner
