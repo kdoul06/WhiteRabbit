@@ -44,8 +44,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+
+import static java.lang.String.format;
 
 //public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -185,18 +189,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 TextView address = (TextView) v.findViewById(R.id.poiAddr);
                 TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
                 ImageView image  = (ImageView) v.findViewById(R.id.poiImage);
-                //TextView score = (TextView) v.findViewById(R.id.poiAvgScoreShort);
+                TextView score = (TextView) v.findViewById(R.id.poiAvgScoreShort);
 
 
 //               RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
                 Poi poi = (Poi) marker.getTag();
                 address.setText(GeoService.getAddress(getApplicationContext(), poi.lat, poi.lon)) ;
                 category.setText(poi.category);
-                //Random rScore = new Random();
-                //DecimalFormat df = new DecimalFormat("#.#");
-                //Log.v(TAG,"Average Score :" + String.format("%.1g%n", df.format(rScore.nextDouble()*10)).toString());
-                //score.setText(String.format("%.1g%n", df.format(rScore.nextDouble()*10)).toString());
-                //                score.setText( v1.toString());
+                Random rScore = new Random();
+                DecimalFormat df = new DecimalFormat("#.#");
+                Float fObj = new Float(rScore.nextFloat()*10);
+                String str = fObj.toString();
+                Log.v(TAG,"Average Score :" + rScore.toString() + " --> " + str + "  " + format("%.1f",fObj));
+                score.setText(format("%.1f",fObj));
 
 //                image.setImageResource(R.mipmap.playground);  -- ebala sto layout thn eikona
 
