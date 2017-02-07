@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.accel.menoutest.MapsActivity">
     <item
-        android:id="@+id/actionSearch"
+        android:id="@+id/action_search"
         android:actionViewClass="android.support.v7.widget.SearchView"
-        android:title="Search" />
+        android:title="@string/action_search" />
     <item
         android:id="@+id/action_profile"
         android:orderInCategory="101"

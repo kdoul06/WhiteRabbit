@@ -53,13 +53,13 @@ import static java.lang.String.format;
 
 //public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    private FirebaseAuth mAuth ;
+    private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef = database.getReference("poi");
 
-    Map<String , Marker> markers;
+    Map<String, Marker> markers;
 
     private String TAG = "banana maps activity";
 
@@ -81,7 +81,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mAuth != null && mAuth.getCurrentUser() != null) {
             uid = mAuth.getCurrentUser().getUid();
         } else {
-            uid="anonymous";
+            uid = "anonymous";
         }
 
 
@@ -146,26 +146,50 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        if (id == R.id.action_search) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΑΝΑΖΗΤΗΣΗ ΜΕ ΠΑΡΑΜΕΤΡΟΥΣ .... ", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (id == R.id.action_profile) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΠΡΟΦΙΛ ΧΡΗΣΤΗ .... ", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, ProfileActivity.class);
+            //intent.putExtra("poi", poi);
+            //intent.putExtra("key", "0");
+            startActivity(intent);
+            return true;
+        }
+
         if (id == R.id.action_settings) {
             Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΡΥΘΜΙΣΕΙΣ .... ", Toast.LENGTH_SHORT).show();
             return true;
         }
-
-        if (id == R.id.action_profile) {
-            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΠΡΟΦΙΛ ΧΡΗΣΤΗ .... ", Toast.LENGTH_SHORT).show();
+        if (id == R.id.actionFaq) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ (FAQ) .... ", Toast.LENGTH_SHORT).show();
             return true;
         }
-
-        if (id==R.id.action_exit) {
+        if (id == R.id.actionPrivacy) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΕΝΗΜΕΡΩΣΗ PRIVACY POLICY .... ", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (id == R.id.actionDisclaimer) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΕΝΗΜΕΡΩΣΗ DISCLAIMER.... ", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (id == R.id.actionAbout) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΕΝΗΜΕΡΩΣΗ ABOUT .... ", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (id == R.id.action_exit) {
+            Toast.makeText(this, "ΕΠΙΛΟΓΗ ΓΙΑ ΕΞΟΔΟ ΑΠΟ ΤΗΝ ΕΦΑΡΜΟΓΗ .... ", Toast.LENGTH_SHORT).show();
             finish();
-         }
+        }
         return super.onOptionsItemSelected(item);
     }
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-       Log.v(TAG,"map ready");
+        Log.v(TAG, "map ready");
 
         mMap = googleMap;
         //θα εχω location εδω ?
@@ -183,25 +207,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 //                image.setImageResource(R.mipmap.playground);
 //                return image;
 
-                   // return createView(R.layout.poi_0_info_short, getApplicationContext(), 2232);
+                // return createView(R.layout.poi_0_info_short, getApplicationContext(), 2232);
                 View v = getLayoutInflater().inflate(R.layout.poi_0_info_short, null);
 
                 TextView address = (TextView) v.findViewById(R.id.poiAddr);
                 TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
-                ImageView image  = (ImageView) v.findViewById(R.id.poiImage);
+                ImageView image = (ImageView) v.findViewById(R.id.poiImage);
                 TextView score = (TextView) v.findViewById(R.id.poiAvgScoreShort);
 
 
 //               RatingBar rating = (RatingBar)  v.findViewById(R.id.poiRating);
                 Poi poi = (Poi) marker.getTag();
-                address.setText(GeoService.getAddress(getApplicationContext(), poi.lat, poi.lon)) ;
+                address.setText(GeoService.getAddress(getApplicationContext(), poi.lat, poi.lon));
                 category.setText(poi.category);
                 Random rScore = new Random();
                 DecimalFormat df = new DecimalFormat("#.#");
-                Float fObj = new Float(rScore.nextFloat()*10);
+                Float fObj = new Float(rScore.nextFloat() * 10);
                 String str = fObj.toString();
-                Log.v(TAG,"Average Score :" + rScore.toString() + " --> " + str + "  " + format("%.1f",fObj));
-                score.setText(format("%.1f",fObj));
+                Log.v(TAG, "Average Score :" + rScore.toString() + " --> " + str + "  " + format("%.1f", fObj));
+                score.setText(format("%.1f", fObj));
 
 //                image.setImageResource(R.mipmap.playground);  -- ebala sto layout thn eikona
 
@@ -282,7 +306,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(intent);
 
 
-        Log.v(TAG,"poi details");
+        Log.v(TAG, "poi details");
 
 //        View v = getLayoutInflater().inflate(R.layout.poi_dtl_0_master, null);
 //        TextView category = (TextView) v.findViewById(R.id.poiCategoryTxt);
@@ -333,7 +357,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 m.setTag(poi);
                 //BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.defaultMarker(R.color.wr_background_color);
                 //m.setIcon(bitmapDescriptor);
-                markers.put(key,m);
+                markers.put(key, m);
 
 
             }
@@ -356,7 +380,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
                 String key = dataSnapshot.getKey();
-              //  Poi poi = dataSnapshot.getValue(Poi.class);
+                //  Poi poi = dataSnapshot.getValue(Poi.class);
                 markers.get(key).remove();
             }
 
@@ -376,11 +400,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-
-
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-       Log.v(TAG,"location ready");
+        Log.v(TAG, "location ready");
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -394,15 +416,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
         if (mLastLocation != null) {
-       //     mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
-        //    mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-            LatLng loc = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,17));
+            //     mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+            //    mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+            LatLng loc = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, 17));
             // εμφανιζει την μπλε κουκιδα.
             mMap.setMyLocationEnabled(true);
             try {
-               Address address = new Geocoder(getApplicationContext()).getFromLocation(loc.latitude,loc.longitude,1).iterator().next();
-                Log.v(TAG, "address is :"+address.getAddressLine(0));
+                Address address = new Geocoder(getApplicationContext()).getFromLocation(loc.latitude, loc.longitude, 1).iterator().next();
+                Log.v(TAG, "address is :" + address.getAddressLine(0));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -422,7 +444,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     protected void onDestroy() {
-        Log.v(TAG,"ON DESTROY sign out");
+        Log.v(TAG, "ON DESTROY sign out");
         mAuth.signOut();
         super.onDestroy();
     }

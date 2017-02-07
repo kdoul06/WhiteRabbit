@@ -22,7 +22,7 @@
             android:layout_weight="1">
 
             <CheckBox
-                android:text="Τουαλέτες"
+                android:text="WC / Baby Room"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox71" />
