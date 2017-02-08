@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/poi_center_bar"
@@ -36,7 +34,7 @@
 
             <CheckBox
                 android:text="Πρόσβαση σε ΑΜΕΑ"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox72"
                 android:layout_weight="1" />
@@ -70,7 +68,7 @@
 
             <CheckBox
                 android:text="Σκίαση"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox62"
                 android:layout_weight="1"/>
@@ -94,7 +92,7 @@
 
             <CheckBox
                 android:text="Παιδότοπος"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox51"
                 android:layout_weight="1" />
@@ -108,7 +106,7 @@
 
             <CheckBox
                 android:text="Άφθονο πράσινο"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox52"
                 android:layout_weight="1" />
@@ -132,7 +130,7 @@
             android:id="@+id/submitBtn"
             android:background="@color/cast_expanded_controller_background_color"
             android:textColor="@color/cast_expanded_controller_text_color"
-            android:onClick="onAddBtnClick" />
+            android:onClick="onAddPoiBtnClick" />
     </LinearLayout>
 
 

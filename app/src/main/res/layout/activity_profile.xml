@@ -14,7 +14,7 @@
         android:id="@+id/layout_top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:enabled="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="false"
@@ -29,15 +29,6 @@
             android:cropToPadding="false"
             android:layout_gravity="left|center_vertical" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/userNameTxt"
-            android:layout_weight="1"
-            android:gravity="center_vertical|center_horizontal"
-            android:layout_gravity="center_horizontal" />
-
     </LinearLayout>
 
 
@@ -50,8 +41,35 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp">
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/usernameTxt"
+            android:layout_weight="1"
+            android:hint="username" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/emailTxt"
+            android:layout_weight="1"
+            android:hint="email" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/passwdTxt"
+            android:layout_weight="1"
+            android:hint="password" />
+
         <TextView
-            android:text="@string/forgot_password"
+            android:text="Show your password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView4"
@@ -61,26 +79,64 @@
             android:layout_gravity="right"
             android:clickable="true" />
 
+        <EditText
+            android:id="@+id/surnameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:hint="Επώνυμο"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:layout_gravity="center"
+            android:cursorVisible="true"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/nameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:hint="Όνομα"
+            android:inputType="textPersonName"
+            android:maxLines="1" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:ems="10"
+            android:id="@+id/zipTxt"
+            android:layout_weight="1"
+            android:hint="Τ.Κ" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/phoneTxt"
+            android:layout_weight="1"
+            android:hint="Τηλέφωνο" />
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_buttons"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/layout_email_password"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp">
 
-        <Space
+        <Button
+            android:id="@+id/profileSubmit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:text="Submit"
+            android:background="@color/cast_expanded_controller_background_color"
+            android:textColor="@color/cast_expanded_controller_text_color"
             android:layout_weight="1" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="3" />
 
     </LinearLayout>
 

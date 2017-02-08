@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/poi_center_bar"
     android:orientation="vertical">
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linear_4"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp">
-
-        <LinearLayout
+          <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -31,25 +18,23 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="130dp" />
 
-            <RatingBar
-                android:theme="@style/RatingBar"
-                android:minHeight="16dip"
-                android:maxHeight="16dip"
-                android:progressDrawable="@color/colorAccent"
-                android:indeterminateDrawable="@color/cast_expanded_controller_background_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ratingBar3"
-                android:isIndicator="false"
-                android:layout_weight="1" />
+              <RatingBar
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/ratingBar3"
+                  android:isIndicator="false"
+                  android:numStars="10"
+                  style="@android:style/Widget.Holo.RatingBar.Small"
+                  android:layout_weight="1" />
 
-            <TextView
+              <TextView
                 android:text="8.8"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/qualityScoreTxt"
                 android:layout_gravity="right|center_vertical"
-                android:gravity="right" />
+                android:gravity="right"
+                android:inputType="numberDecimal" />
 
             <Space
                 android:layout_width="10dp"
@@ -77,7 +62,7 @@
                 android:layout_gravity="center_vertical" />
 
             <RatingBar
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/ratingBar6"
                 android:isIndicator="false"
@@ -90,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/poiDistanceTxt"
                 android:layout_gravity="right|center_vertical"
-                android:gravity="right" />
+                android:gravity="right"
+                android:inputType="numberDecimal" />
 
             <Space
                 android:layout_width="10dp"
@@ -118,7 +104,7 @@
                 android:layout_gravity="center_vertical" />
 
             <RatingBar
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/ratingBar2"
                 android:isIndicator="false"
@@ -131,15 +117,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView10"
                 android:gravity="right"
-                android:layout_gravity="center_vertical" />
+                android:layout_gravity="center_vertical"
+                android:inputType="numberDecimal" />
 
             <Space
                 android:layout_width="10dp"
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
-
-    </LinearLayout>
 
 
 </LinearLayout>

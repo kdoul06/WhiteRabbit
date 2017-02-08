@@ -23,7 +23,8 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         if (mAuth != null && mAuth.getCurrentUser() != null) {
             uid = mAuth.getCurrentUser().getUid();
-            userLogedIn = mAuth.getCurrentUser().toString();
+
+            userLogedIn = mAuth.getCurrentUser().getDisplayName();
 
         } else {
             uid = "anonymous";
@@ -35,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_profile);
 
-        TextView userName = (TextView) findViewById(R.id.userNameTxt);
+        TextView userName = (TextView) findViewById(R.id.usernameTxt);
         userName.setText(userLogedIn);
 
     }

@@ -12,8 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ergasia.omada5.WhiteRabbit.R;
-import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.ergasia.omada5.WhiteRabbit.Services.GeoService;
+import com.ergasia.omada5.WhiteRabbit.entities.Poi;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -125,22 +125,23 @@ public class PoiActivity extends AppCompatActivity implements AdapterView.OnItem
 //    }
 
 
-    public void onAddBtnClick(View view) {
+    public void onAddPoiBtnClick(View view) {
         // εξακολουθω να θελω να ειναι popup ...
-        Toast.makeText(this, "ΕΙΣΑΙ ΕΔΩ ΓΙΑ ΛΙΓΟ ....", Toast.LENGTH_LONG).show();
-        poi.uid = mAuth.getCurrentUser().getUid();
+        switch (poi.uid = mAuth.getCurrentUser().getUid()) {
+        }
 //
         Log.v(TAG, poi.category);
 
-        //Toast.makeText(this, "ΠΑΤΗΣΑΤΕ ΤΟ ΚΟΥΜΠΙ ΑΛΛΑ Η ΚΑΤΑΧΩΡΗΣΗ ΔΕΝ ΕΓΙΝΕ", Toast.LENGTH_LONG).show();
         myRef.child(key).setValue(poi);
+        Toast.makeText(this, "Το POI ενημερώθηκε....", Toast.LENGTH_LONG).show();
+
         finish();
     }
 
 
     private void updateCategories() {
 
-        categorySpiner.setAdapter(new ArrayAdapter(this,android.R.layout.simple_list_item_1, categoryList));
+        categorySpiner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, categoryList));
 
 
     }
